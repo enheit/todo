@@ -4,7 +4,7 @@
   "description": "My first todo app in React/Redux/JSX",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack-dev-server --inline --hot --colors --progress --display-error-details"
   },
   "author": "Roman Mahotskyi",
   "license": "ISC",
@@ -19,7 +19,8 @@
     "babel-preset-es2015": "^6.16.0",
     "babel-preset-react": "^6.16.0",
     "css-loader": "^0.25.0",
-    "node-sass": "^3.10.0",
-    "sass-loader": "^4.0.2"
+    "node-sass": "^3.10.1",
+    "sass-loader": "^4.0.2",
+    "webpack-dev-server": "^1.16.2"
   }
 }

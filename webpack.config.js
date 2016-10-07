@@ -1,36 +1,38 @@
-var path = require('path');
+let path = require('path');
 
 module.exports = {
-	context: path.join(__dirname, '/app'),
-	entry: './src/index.jsx',
-	devtool: 'source-map',
-	watch: true,
+	// 'context' is absolute path to a work directory
+	context: path.join(__dirname, 'src'),
+	// 'entry' file which is entry point of all dependencies
+	entry: './index.jsx',
+	// 'output' represent a folder that contains a file which is bundle of source files
 	module: {
 		loaders: [
 			{
-				test: /\.jsx$/,
+				// Tracking all files with following file resolution
+				test: /\.jsx?$/,
+				// Exclude all files in following folder
 				exclude: /node_modules/,
+				// Which kind of loaders to use
 				loader: 'babel-loader',
-				query: {
-					presets: ['react', 'es2015'],
+				// TODO: What is 'query' & 'presents'
+				query: { 
+					presets: ['es2015', 'react'] 
 				}
 			},
 			{
-				test: /\.js$/, 
-				exclude: /node_modules/, 
-				loader: 'babel-loader'
-			},
-			{
 				test: /\.scss$/,
-				loaders: ["style", "css", "sass"]
+				exclude: /node_modules/,
+				loaders: ['style', 'css', 'sass']
 			}
 		]
 	},
-	output: {
-		path: path.join(__dirname, '/app/bin/js'),
-		filename: 'bundle.min.js'
-	},
+	// Added sufix to the file name automatically. ('index' -> 'index.jsx')
 	resolve: {
-		extensions: ['', '.js', '.jsx', '.scss']
+		extensions: ['', '.css', '.scss', '.js', '.jsx'] 
+	},
+	output: {
+		path: __dirname + "/dist/",
+		filename: 'bundle.js'
 	}
-};
+}
